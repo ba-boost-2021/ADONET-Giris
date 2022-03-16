@@ -1,5 +1,5 @@
-using BilgeAdam.ADONET.Select.Production;
-using BilgeAdam.ADONET.Select.Sales;
+using BilgeAdam.Sql.ThirdParty.HR;
+using BilgeAdam.Sql.ThirdParty.Production;
 
 namespace BilgeAdam.Sql.ThirdParty
 {
@@ -12,7 +12,7 @@ namespace BilgeAdam.Sql.ThirdParty
 
         private void msbSalesHistory_Click(object sender, EventArgs e)
         {
-            OpenChildForm<frmSales>();
+            
         }
 
         private void msbStocks_Click(object sender, EventArgs e)
@@ -25,6 +25,11 @@ namespace BilgeAdam.Sql.ThirdParty
             var f = Activator.CreateInstance<T>();
             f.MdiParent = this;
             f.Show();
+        }
+
+        private void msbEmployees_Click(object sender, EventArgs e)
+        {
+            OpenChildForm<frmEmployees>();
         }
     }
 }

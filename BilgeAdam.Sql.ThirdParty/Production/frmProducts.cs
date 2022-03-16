@@ -97,7 +97,11 @@ namespace BilgeAdam.Sql.ThirdParty.Production
             var offSetQuery = $"ORDER BY p.ProductID OFFSET {PageIndex * PageSize} ROWS FETCH NEXT {PageSize} ROWS ONLY";
             var countQuery = string.Format(rawQuery, countExpression, string.Empty);
             var dataQuery = string.Format(rawQuery, columns, offSetQuery);
-            connectionManager.RunSelect(dataQuery, MapProducts);
+            var result = connectionManager.RunSelect<StockProductModel>(dataQuery);
+            foreach (var product in result)
+            {
+                products.Add(product);
+            }
             TotalCount = connectionManager.RunAggregation<int>(countQuery);
         }
 
@@ -106,42 +110,10 @@ namespace BilgeAdam.Sql.ThirdParty.Production
             suppliers.Clear();
             categories.Clear();
             var categoryQuery = "SELECT CategoryId AS Id, CategoryName AS Name FROM Categories";
-            connectionManager.RunSelect(categoryQuery, MapCategories);
+            connectionManager.RunSelect<ComboBoxItem>(categoryQuery);
 
             var supplierQuery = "SELECT SupplierId AS Id, CompanyName AS Name FROM Suppliers";
-            connectionManager.RunSelect(supplierQuery, MapSuppliers);
-        }
-
-        private void MapCategories(SqlDataReader reader)
-        {
-            categories.Add(new ComboBoxItem
-            {
-                Id = reader.GetInt32(0),
-                Name = reader.GetString(1),
-            });
-        }
-
-        private void MapSuppliers(SqlDataReader reader)
-        {
-            suppliers.Add(new ComboBoxItem
-            {
-                Id = reader.GetInt32(0),
-                Name = reader.GetString(1),
-            });
-        }
-
-        private void MapProducts(SqlDataReader reader)
-        {
-            products.Add(new StockProductModel
-            {
-                Id = reader.GetInt32(0),
-                Name = reader.GetString(1),
-                Category = reader.GetString(4),
-                Company = reader.GetString(5),
-
-                Price = reader["Price"] != null ? Convert.ToDecimal(reader["Price"]) : null,
-                Stock = reader["Stock"] != null ? Convert.ToInt32(reader["Stock"]) : null
-            });
+            connectionManager.RunSelect<ComboBoxItem>(supplierQuery);
         }
 
         private void btnPrevious_Click(object sender, EventArgs e)

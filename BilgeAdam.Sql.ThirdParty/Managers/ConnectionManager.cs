@@ -1,20 +1,18 @@
 ﻿using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using BilgeAdam.Sql.ThirdParty.HR.Models;
+using Dapper;
 
 namespace BilgeAdam.Sql.ThirdParty.Managers
 {
     public class ConnectionManager
     {
         private SqlConnection connection;
-        private void Connect()
+        public ConnectionManager()
         {
-            if (connection == null)
-            {
-                var connectionString = ConfigurationManager.ConnectionStrings["LocalConnection"].ConnectionString;
-                connection = new SqlConnection(connectionString);
-                connection.Open();
-            }
+            var connectionString = ConfigurationManager.ConnectionStrings["LocalConnection"].ConnectionString;
+            connection = new SqlConnection(connectionString);
         }
 
         private void Disconnect()
@@ -27,32 +25,35 @@ namespace BilgeAdam.Sql.ThirdParty.Managers
             {
                 connection.Close();
             }
-            connection.Dispose();
-            connection = null;
         }
 
-        public void RunSelect(string query, Action<SqlDataReader> mapperFunction)
+        public List<T> RunSelect<T>(string query)
         {
-            Connect();
-            var command = new SqlCommand(query, connection);
-            using (var reader = command.ExecuteReader())
-            {
-                while (reader.Read())
-                {
-                    mapperFunction(reader);
-                }
-            }
+            var result = connection.Query<T>(query);
             Disconnect();
+            return result.ToList();
+        }
+
+        public List<T> RunSelect<T>(string query, object parameters)
+        {
+            var result = connection.Query<T>(query, parameters);
+            Disconnect();
+            return result.ToList();
         }
 
         public T RunAggregation<T>(string query)
         {
-            Connect();
             var command = new SqlCommand(query, connection);
             var result = (T)command.ExecuteScalar(); // tek hücreli tablo çıktısı olması lazım (örnek count)
             
             Disconnect();
             return result;
+        }
+
+        public void CreateNew<T>(string query, T data)
+        {
+            connection.Execute(query, data);
+            Disconnect();
         }
 
         //private List<T> mapperFunction<T>(SqlDataReader a) // -> Func<SqlDataReader, List<T>> mapperFunction

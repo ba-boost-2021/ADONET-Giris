@@ -37,6 +37,8 @@
             this.msbSalesHistory = new System.Windows.Forms.ToolStripMenuItem();
             this.ürünToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.msbStocks = new System.Windows.Forms.ToolStripMenuItem();
+            this.insanKaynaklarıToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.msbEmployees = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,7 +47,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.uygulamaToolStripMenuItem,
             this.satışToolStripMenuItem,
-            this.ürünToolStripMenuItem});
+            this.ürünToolStripMenuItem,
+            this.insanKaynaklarıToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(951, 24);
@@ -79,19 +82,19 @@
             // yeniToolStripMenuItem
             // 
             this.yeniToolStripMenuItem.Name = "yeniToolStripMenuItem";
-            this.yeniToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.yeniToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.yeniToolStripMenuItem.Text = "Yeni";
             // 
             // faturaToolStripMenuItem
             // 
             this.faturaToolStripMenuItem.Name = "faturaToolStripMenuItem";
-            this.faturaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.faturaToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.faturaToolStripMenuItem.Text = "Fatura";
             // 
             // msbSalesHistory
             // 
             this.msbSalesHistory.Name = "msbSalesHistory";
-            this.msbSalesHistory.Size = new System.Drawing.Size(180, 22);
+            this.msbSalesHistory.Size = new System.Drawing.Size(143, 22);
             this.msbSalesHistory.Text = "Satış Geçmişi";
             this.msbSalesHistory.Click += new System.EventHandler(this.msbSalesHistory_Click);
             // 
@@ -106,9 +109,24 @@
             // msbStocks
             // 
             this.msbStocks.Name = "msbStocks";
-            this.msbStocks.Size = new System.Drawing.Size(180, 22);
+            this.msbStocks.Size = new System.Drawing.Size(147, 22);
             this.msbStocks.Text = "Stok Yönetimi";
             this.msbStocks.Click += new System.EventHandler(this.msbStocks_Click);
+            // 
+            // insanKaynaklarıToolStripMenuItem
+            // 
+            this.insanKaynaklarıToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.msbEmployees});
+            this.insanKaynaklarıToolStripMenuItem.Name = "insanKaynaklarıToolStripMenuItem";
+            this.insanKaynaklarıToolStripMenuItem.Size = new System.Drawing.Size(104, 20);
+            this.insanKaynaklarıToolStripMenuItem.Text = "İnsan Kaynakları";
+            // 
+            // msbEmployees
+            // 
+            this.msbEmployees.Name = "msbEmployees";
+            this.msbEmployees.Size = new System.Drawing.Size(180, 22);
+            this.msbEmployees.Text = "Personel Listesi";
+            this.msbEmployees.Click += new System.EventHandler(this.msbEmployees_Click);
             // 
             // frmMain
             // 
@@ -139,5 +157,7 @@
         private ToolStripMenuItem msbSalesHistory;
         private ToolStripMenuItem ürünToolStripMenuItem;
         private ToolStripMenuItem msbStocks;
+        private ToolStripMenuItem insanKaynaklarıToolStripMenuItem;
+        private ToolStripMenuItem msbEmployees;
     }
 }
