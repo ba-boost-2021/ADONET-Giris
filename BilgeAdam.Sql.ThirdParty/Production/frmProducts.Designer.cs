@@ -1,4 +1,4 @@
-﻿namespace BilgeAdam.ADONET.Select.Production
+﻿namespace BilgeAdam.Sql.ThirdParty.Production
 {
     partial class frmProducts
     {
@@ -59,7 +59,6 @@
             this.cmbCategories.Name = "cmbCategories";
             this.cmbCategories.Size = new System.Drawing.Size(191, 23);
             this.cmbCategories.TabIndex = 0;
-            this.cmbCategories.SelectedIndexChanged += new System.EventHandler(this.cmbCategories_SelectedIndexChanged);
             // 
             // groupBox1
             // 
@@ -83,7 +82,6 @@
             this.btnClearFilter.TabIndex = 2;
             this.btnClearFilter.Text = "Filtreyi Temizle";
             this.btnClearFilter.UseVisualStyleBackColor = true;
-            this.btnClearFilter.Click += new System.EventHandler(this.btnClearFilter_Click);
             // 
             // label2
             // 
@@ -111,7 +109,6 @@
             this.cmbSuppliers.Name = "cmbSuppliers";
             this.cmbSuppliers.Size = new System.Drawing.Size(244, 23);
             this.cmbSuppliers.TabIndex = 0;
-            this.cmbSuppliers.SelectedIndexChanged += new System.EventHandler(this.cmbSuppliers_SelectedIndexChanged);
             // 
             // dgvProducts
             // 

@@ -1,10 +1,17 @@
-﻿using BilgeAdam.ADONET.Select.Managers;
-using BilgeAdam.ADONET.Select.Production.Models;
+﻿using BilgeAdam.Sql.ThirdParty.Managers;
+using BilgeAdam.Sql.ThirdParty.Production.Models;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
-namespace BilgeAdam.ADONET.Select.Production
+namespace BilgeAdam.Sql.ThirdParty.Production
 {
     public partial class frmProducts : Form
     {
@@ -64,10 +71,6 @@ namespace BilgeAdam.ADONET.Select.Production
             }
         }
 
-        public int CategoryId { get; set; }
-
-        public int SupplierId { get; set; }
-
 
         private void frmProducts_Load(object sender, EventArgs e)
         {
@@ -89,50 +92,19 @@ namespace BilgeAdam.ADONET.Select.Production
             var rawQuery = @"SELECT {0}
                            FROM Products p
                            INNER JOIN Categories c ON c.CategoryID = p.CategoryID 
-                           INNER JOIN Suppliers s ON s.SupplierID  = p.SupplierID 
-                           {1}
-                           {2}";
-
-            var filterQuery = GetFilterQuery();
+                           INNER JOIN Suppliers s ON s.SupplierID  = p.SupplierID {1}";
 
             var offSetQuery = $"ORDER BY p.ProductID OFFSET {PageIndex * PageSize} ROWS FETCH NEXT {PageSize} ROWS ONLY";
-            var countQuery = string.Format(rawQuery, countExpression, filterQuery, string.Empty);
-            var dataQuery = string.Format(rawQuery, columns, filterQuery, offSetQuery);
+            var countQuery = string.Format(rawQuery, countExpression, string.Empty);
+            var dataQuery = string.Format(rawQuery, columns, offSetQuery);
             connectionManager.RunSelect(dataQuery, MapProducts);
             TotalCount = connectionManager.RunAggregation<int>(countQuery);
-            SetButtonAvailibilities();
-        }
-
-        private string GetFilterQuery()
-        {
-            if (CategoryId <= 0 && SupplierId <= 0)
-            {
-                return string.Empty;
-            }
-            PageIndex = 0;
-            var filterExtension = new StringBuilder();
-            var filter = new List<string>();
-            if (CategoryId > 0)
-            {
-                filter.Add($"c.CategoryId = {CategoryId}");
-            }
-            if (SupplierId > 0)
-            {
-                filter.Add($"s.SupplierId = {SupplierId}");
-            }
-
-            filterExtension.Append(" WHERE ");
-            filterExtension.Append(string.Join(" AND ", filter));
-            return filterExtension.ToString();
         }
 
         private void LoadInitials()
         {
             suppliers.Clear();
             categories.Clear();
-            suppliers.Add(new ComboBoxItem { Id = 0, Name = "Seçiniz" });
-            categories.Add(new ComboBoxItem { Id = 0, Name = "Seçiniz" });
-
             var categoryQuery = "SELECT CategoryId AS Id, CategoryName AS Name FROM Categories";
             connectionManager.RunSelect(categoryQuery, MapCategories);
 
@@ -176,18 +148,20 @@ namespace BilgeAdam.ADONET.Select.Production
         {
             PageIndex--;
             LoadProducts();
-            
+            SetButtonAvailibilities();
         }
 
         private void btnNext_Click(object sender, EventArgs e)
         {
             PageIndex++;
             LoadProducts();
+            SetButtonAvailibilities();
         }
 
         private void cmbItemCount_SelectedIndexChanged(object sender, EventArgs e)
         {
             LoadProducts();
+            SetButtonAvailibilities();
         }
 
         private void SetButtonAvailibilities()
@@ -195,32 +169,5 @@ namespace BilgeAdam.ADONET.Select.Production
             btnNext.Enabled = TotalCount > PageSize * (PageIndex + 1);
             btnPrevious.Enabled = PageIndex > 0;
         }
-
-        private void cmbCategories_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            CategoryId = (cmbCategories.SelectedItem as ComboBoxItem).Id;
-            dgcCategory.Visible =  CategoryId == 0;
-
-            LoadProducts();
-        }
-
-        private void cmbSuppliers_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            SupplierId = (cmbSuppliers.SelectedItem as ComboBoxItem).Id;
-            dgcSupplier.Visible = SupplierId == 0;
-
-            LoadProducts();
-        }
-
-        private void btnClearFilter_Click(object sender, EventArgs e)
-        {
-            cmbSuppliers.SelectedIndex = 0;
-            cmbCategories.SelectedIndex = 0;
-        }
     }
 }
-
-
-/*
- YAZILIMDA TEST SÜREÇLERİ !!!!!!!
- */
