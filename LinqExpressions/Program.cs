@@ -1,4 +1,6 @@
-﻿var list = new List<Person>
+﻿// LINQ --> System.Linq
+
+var list = new List<Person>
 {
     new Person("Can", 34, Gender.Male),
     new Person("Metehan", 22, Gender.Male),
@@ -9,6 +11,15 @@
     new Person("Berk", 25, Gender.Male),
     new Person("İsmail", 18, Gender.Male)
 };
+
+//LINQ Query
+var olderPeopleV1 = from person in list
+                    where person.Age > 30
+                    orderby person.Age descending
+                    select person; 
+
+//Fluent LINQ Query
+var olderPeopleV2 = list.Where(p => p.Age > 30).OrderByDescending(p => p.Age).ToList();
 
 //SELECT COUNT(0) FROM Persons
 var count = list.Count();

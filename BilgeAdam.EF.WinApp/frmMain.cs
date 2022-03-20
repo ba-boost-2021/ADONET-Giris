@@ -51,13 +51,57 @@ namespace BilgeAdam.EF.WinApp
         {
             using (var context = new NorthwindDbContext())
             {
-                var selected = cmbCategories.SelectedItem as Category;
+                var selected = cmbCategories.SelectedItem as ComboBoxItem;
                 dgvProducts.DataSource = null;
                 dgvProducts.DataSource = context.Products
-                                                .Where(f => f.CategoryId == selected.CategoryId)
+                                                .Where(f => f.CategoryId == selected.Id)
                                                 .ToList();
 
                 //SELECT * FROM Products f WHERE f.CategoryId = @Id
+            }
+        }
+
+        private void cmbSuppliers_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            using (var context = new NorthwindDbContext())
+            {
+                var selected = cmbSuppliers.SelectedItem as ComboBoxItem;
+                dgvProducts.DataSource = null;
+                dgvProducts.DataSource = context.Products
+                                                .Where(f => f.SupplierID == selected.Id)
+                                                .Select(s => new ProductViewModel
+                                                {
+                                                    Name = s.ProductName,
+                                                    Price = s.UnitPrice,
+                                                    Stock = s.UnitsInStock
+                                                })
+                                                .ToList();
+                //SELECT
+                //      s.ProductName AS Name,
+                //      s.UnitPrice AS Price,
+                //      s.UnitsInStock AS Stock
+                //FROM Products s
+                //WHERE s.SupplierId = @Id
+
+                //-------------------------------------------------------------------------
+
+                var a = context.Products.Select(s => new ProductViewModel
+                                        {
+                                            Name = s.ProductName,
+                                            Price = s.UnitPrice,
+                                            Stock = s.UnitsInStock
+                                        })
+                                        .Where(f => f.Stock > 0)
+                                        .ToList();
+
+                /*
+                 SELECT * FROM (SELECT
+                       s.ProductName AS Name,
+                       s.UnitPrice AS Price,
+                       s.UnitsInStock AS Stock
+                 FROM Products s) q WHERE q.Stock > 0
+                 
+                 */
             }
         }
     }

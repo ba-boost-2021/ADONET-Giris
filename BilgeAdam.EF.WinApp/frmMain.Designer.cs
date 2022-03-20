@@ -45,6 +45,7 @@
             this.cmbSuppliers.Name = "cmbSuppliers";
             this.cmbSuppliers.Size = new System.Drawing.Size(236, 23);
             this.cmbSuppliers.TabIndex = 0;
+            this.cmbSuppliers.SelectedIndexChanged += new System.EventHandler(this.cmbSuppliers_SelectedIndexChanged);
             // 
             // cmbCategories
             // 
