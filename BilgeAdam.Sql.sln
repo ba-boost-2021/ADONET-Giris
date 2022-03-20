@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BilgeAdam.EF.Common", "Bilg
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BilgeAdam.EF.WinApp", "BilgeAdam.EF.WinApp\BilgeAdam.EF.WinApp.csproj", "{CE163935-3B8B-47CA-848F-236F11981D51}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqExpressions", "LinqExpressions\LinqExpressions.csproj", "{EA61D51A-5CA8-405F-8AD0-3C81741D0E58}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -71,6 +73,10 @@ Global
 		{CE163935-3B8B-47CA-848F-236F11981D51}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE163935-3B8B-47CA-848F-236F11981D51}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CE163935-3B8B-47CA-848F-236F11981D51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA61D51A-5CA8-405F-8AD0-3C81741D0E58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA61D51A-5CA8-405F-8AD0-3C81741D0E58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA61D51A-5CA8-405F-8AD0-3C81741D0E58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA61D51A-5CA8-405F-8AD0-3C81741D0E58}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -85,6 +91,7 @@ Global
 		{4E3F8BEF-1B7E-48E4-8D4C-D75173D6D2C2} = {90DD4C12-CD80-4AF4-8EE9-037E23354C84}
 		{AD59FFA0-8017-4EA3-8FBA-CED471116EF7} = {90DD4C12-CD80-4AF4-8EE9-037E23354C84}
 		{CE163935-3B8B-47CA-848F-236F11981D51} = {90DD4C12-CD80-4AF4-8EE9-037E23354C84}
+		{EA61D51A-5CA8-405F-8AD0-3C81741D0E58} = {90DD4C12-CD80-4AF4-8EE9-037E23354C84}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {593AF392-1DBF-4C29-8F05-03E8E682D301}

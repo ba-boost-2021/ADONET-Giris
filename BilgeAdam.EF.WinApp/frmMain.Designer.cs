@@ -33,6 +33,7 @@
             this.dgvProducts = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnReset = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
             this.SuspendLayout();
             // 
@@ -53,6 +54,7 @@
             this.cmbCategories.Name = "cmbCategories";
             this.cmbCategories.Size = new System.Drawing.Size(216, 23);
             this.cmbCategories.TabIndex = 0;
+            this.cmbCategories.SelectedIndexChanged += new System.EventHandler(this.cmbCategories_SelectedIndexChanged);
             // 
             // dgvProducts
             // 
@@ -84,11 +86,22 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Kategori";
             // 
+            // btnReset
+            // 
+            this.btnReset.Location = new System.Drawing.Point(12, 444);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(118, 33);
+            this.btnReset.TabIndex = 3;
+            this.btnReset.Text = "Reset";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 485);
+            this.Controls.Add(this.btnReset);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvProducts);
@@ -113,5 +126,6 @@
         private DataGridView dgvProducts;
         private Label label1;
         private Label label2;
+        private Button btnReset;
     }
 }
