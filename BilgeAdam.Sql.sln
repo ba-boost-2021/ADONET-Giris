@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PrivateProject", "PrivatePr
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03", "03", "{36DFDF99-8E02-45C6-8AB4-7C36A93972AC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BilgeAdam.Sql.ThirdParty", "BilgeAdam.Sql.ThirdParty\BilgeAdam.Sql.ThirdParty.csproj", "{C4F1213B-E66E-4564-BF8F-57596A01ABC8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BilgeAdam.Sql.ThirdParty", "BilgeAdam.Sql.ThirdParty\BilgeAdam.Sql.ThirdParty.csproj", "{C4F1213B-E66E-4564-BF8F-57596A01ABC8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

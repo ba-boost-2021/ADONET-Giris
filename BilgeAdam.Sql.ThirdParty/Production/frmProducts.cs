@@ -1,4 +1,6 @@
-﻿using BilgeAdam.Sql.ThirdParty.Managers;
+﻿using BilgeAdam.Sql.ThirdParty.Events;
+using BilgeAdam.Sql.ThirdParty.Extensions;
+using BilgeAdam.Sql.ThirdParty.Managers;
 using BilgeAdam.Sql.ThirdParty.Production.Models;
 using System;
 using System.Collections.Generic;
@@ -32,11 +34,18 @@ namespace BilgeAdam.Sql.ThirdParty.Production
             suppliers = new BindingList<ComboBoxItem>();
             cmbItemCount.SelectedIndex = 0;
             dgvProducts.DataSource = products;
+            EventManager.ProductionEvents.OnProductAdded += ProductionEvents_OnProductAdded; //  Event subscription
 
             cmbCategories.DataSource = categories;
             cmbCategories.DisplayMember = nameof(ComboBoxItem.Name);
             cmbSuppliers.DataSource = suppliers;
             cmbSuppliers.DisplayMember = nameof(ComboBoxItem.Name);
+        }
+
+        private void ProductionEvents_OnProductAdded()
+        {
+            LoadProducts();
+            //productionEvents.OnProductAdded -= ProductionEvents_OnProductAdded; // Event unsubcription
         }
 
         public int PageIndex
@@ -110,10 +119,12 @@ namespace BilgeAdam.Sql.ThirdParty.Production
             suppliers.Clear();
             categories.Clear();
             var categoryQuery = "SELECT CategoryId AS Id, CategoryName AS Name FROM Categories";
-            connectionManager.RunSelect<ComboBoxItem>(categoryQuery);
+            var loadedCategories = connectionManager.RunSelect<ComboBoxItem>(categoryQuery);
+            categories.AddRange(loadedCategories);
 
             var supplierQuery = "SELECT SupplierId AS Id, CompanyName AS Name FROM Suppliers";
-            connectionManager.RunSelect<ComboBoxItem>(supplierQuery);
+            var loadedSuppliers = connectionManager.RunSelect<ComboBoxItem>(supplierQuery);
+            suppliers.AddRange(loadedSuppliers);
         }
 
         private void btnPrevious_Click(object sender, EventArgs e)

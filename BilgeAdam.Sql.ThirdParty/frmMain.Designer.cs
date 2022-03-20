@@ -39,6 +39,7 @@
             this.msbStocks = new System.Windows.Forms.ToolStripMenuItem();
             this.insanKaynaklarıToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.msbEmployees = new System.Windows.Forms.ToolStripMenuItem();
+            this.msbNewProduct = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -101,7 +102,8 @@
             // ürünToolStripMenuItem
             // 
             this.ürünToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.msbStocks});
+            this.msbStocks,
+            this.msbNewProduct});
             this.ürünToolStripMenuItem.Name = "ürünToolStripMenuItem";
             this.ürünToolStripMenuItem.Size = new System.Drawing.Size(45, 20);
             this.ürünToolStripMenuItem.Text = "Ürün";
@@ -109,7 +111,7 @@
             // msbStocks
             // 
             this.msbStocks.Name = "msbStocks";
-            this.msbStocks.Size = new System.Drawing.Size(147, 22);
+            this.msbStocks.Size = new System.Drawing.Size(180, 22);
             this.msbStocks.Text = "Stok Yönetimi";
             this.msbStocks.Click += new System.EventHandler(this.msbStocks_Click);
             // 
@@ -124,9 +126,16 @@
             // msbEmployees
             // 
             this.msbEmployees.Name = "msbEmployees";
-            this.msbEmployees.Size = new System.Drawing.Size(180, 22);
+            this.msbEmployees.Size = new System.Drawing.Size(154, 22);
             this.msbEmployees.Text = "Personel Listesi";
             this.msbEmployees.Click += new System.EventHandler(this.msbEmployees_Click);
+            // 
+            // msbNewProduct
+            // 
+            this.msbNewProduct.Name = "msbNewProduct";
+            this.msbNewProduct.Size = new System.Drawing.Size(180, 22);
+            this.msbNewProduct.Text = "Yeni Ürün";
+            this.msbNewProduct.Click += new System.EventHandler(this.msbNewProduct_Click);
             // 
             // frmMain
             // 
@@ -159,5 +168,6 @@
         private ToolStripMenuItem msbStocks;
         private ToolStripMenuItem insanKaynaklarıToolStripMenuItem;
         private ToolStripMenuItem msbEmployees;
+        private ToolStripMenuItem msbNewProduct;
     }
 }

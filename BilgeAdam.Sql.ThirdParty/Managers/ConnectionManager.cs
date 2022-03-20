@@ -13,6 +13,10 @@ namespace BilgeAdam.Sql.ThirdParty.Managers
         {
             var connectionString = ConfigurationManager.ConnectionStrings["LocalConnection"].ConnectionString;
             connection = new SqlConnection(connectionString);
+            if (connection.State != ConnectionState.Open)
+            {
+                connection.Open();
+            }
         }
 
         private void Disconnect()
@@ -43,6 +47,10 @@ namespace BilgeAdam.Sql.ThirdParty.Managers
 
         public T RunAggregation<T>(string query)
         {
+            if (connection.State != ConnectionState.Open)
+            {
+                connection.Open();
+            }
             var command = new SqlCommand(query, connection);
             var result = (T)command.ExecuteScalar(); // tek hücreli tablo çıktısı olması lazım (örnek count)
             
@@ -53,6 +61,18 @@ namespace BilgeAdam.Sql.ThirdParty.Managers
         public void CreateNew<T>(string query, T data)
         {
             connection.Execute(query, data);
+            Disconnect();
+        }
+
+        public void Insert(string query, List<SqlParameter> sqlParameters)
+        {
+            if (connection.State != ConnectionState.Open)
+            {
+                connection.Open();
+            }
+            var command = new SqlCommand(query, connection);
+            command.Parameters.AddRange(sqlParameters.ToArray());
+            command.ExecuteNonQuery();
             Disconnect();
         }
 

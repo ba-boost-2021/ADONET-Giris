@@ -10,6 +10,13 @@ namespace BilgeAdam.Sql.ThirdParty
             InitializeComponent();
         }
 
+        private void OpenChildForm<T>() where T : Form
+        {
+            var f = Activator.CreateInstance<T>();
+            f.MdiParent = this;
+            f.Show();
+        }
+
         private void msbSalesHistory_Click(object sender, EventArgs e)
         {
             
@@ -20,16 +27,14 @@ namespace BilgeAdam.Sql.ThirdParty
             OpenChildForm<frmProducts>();
         }
 
-        private void OpenChildForm<T>() where T : Form
-        {
-            var f = Activator.CreateInstance<T>();
-            f.MdiParent = this;
-            f.Show();
-        }
-
         private void msbEmployees_Click(object sender, EventArgs e)
         {
             OpenChildForm<frmEmployees>();
+        }
+
+        private void msbNewProduct_Click(object sender, EventArgs e)
+        {
+            OpenChildForm<frmNewProduct>();
         }
     }
 }
