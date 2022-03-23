@@ -148,7 +148,19 @@ namespace BilgeAdam.EF.WinApp
                 dgvProducts.Rows[clickedArea.RowIndex].Selected = true;
             }
         }
+
+        private void csbUpdate_Click(object sender, EventArgs e)
+        {
+            var selected = dgvProducts.SelectedRows[0].DataBoundItem as Product;
+            if (selected == null)
+            {
+                return;
+            }
+
+            var frm = new frmUpdateProduct(selected);
+            frm.ShowDialog();
+        }
     }
 }
 
-//CLEAN CODE ARCHITECTURE
+//CLEAN CODE : daha az blok ve olumsuz koşul scopelarının önüne geçilmesini sağlayan kod yazım yaklaşımı

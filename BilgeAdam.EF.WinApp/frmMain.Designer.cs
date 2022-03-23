@@ -38,6 +38,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnReset = new System.Windows.Forms.Button();
             this.btnNew = new System.Windows.Forms.Button();
+            this.csbUpdate = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
             this.ctxRightClick.SuspendLayout();
             this.SuspendLayout();
@@ -82,14 +83,15 @@
             // ctxRightClick
             // 
             this.ctxRightClick.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.csbDelete});
+            this.csbDelete,
+            this.csbUpdate});
             this.ctxRightClick.Name = "ctxRightClick";
-            this.ctxRightClick.Size = new System.Drawing.Size(87, 26);
+            this.ctxRightClick.Size = new System.Drawing.Size(181, 70);
             // 
             // csbDelete
             // 
             this.csbDelete.Name = "csbDelete";
-            this.csbDelete.Size = new System.Drawing.Size(86, 22);
+            this.csbDelete.Size = new System.Drawing.Size(180, 22);
             this.csbDelete.Text = "Sil";
             this.csbDelete.Click += new System.EventHandler(this.csbDelete_Click);
             // 
@@ -131,6 +133,13 @@
             this.btnNew.UseVisualStyleBackColor = true;
             this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
+            // csbUpdate
+            // 
+            this.csbUpdate.Name = "csbUpdate";
+            this.csbUpdate.Size = new System.Drawing.Size(180, 22);
+            this.csbUpdate.Text = "Güncelle";
+            this.csbUpdate.Click += new System.EventHandler(this.csbUpdate_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -167,5 +176,6 @@
         private Button btnNew;
         private ContextMenuStrip ctxRightClick;
         private ToolStripMenuItem csbDelete;
+        private ToolStripMenuItem csbUpdate;
     }
 }
