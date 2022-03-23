@@ -28,13 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.cmbSuppliers = new System.Windows.Forms.ComboBox();
             this.cmbCategories = new System.Windows.Forms.ComboBox();
             this.dgvProducts = new System.Windows.Forms.DataGridView();
+            this.ctxRightClick = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.csbDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnReset = new System.Windows.Forms.Button();
+            this.btnNew = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
+            this.ctxRightClick.SuspendLayout();
             this.SuspendLayout();
             // 
             // cmbSuppliers
@@ -61,13 +66,32 @@
             // 
             this.dgvProducts.AllowUserToAddRows = false;
             this.dgvProducts.AllowUserToDeleteRows = false;
+            this.dgvProducts.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvProducts.ContextMenuStrip = this.ctxRightClick;
             this.dgvProducts.Location = new System.Drawing.Point(11, 75);
+            this.dgvProducts.MultiSelect = false;
             this.dgvProducts.Name = "dgvProducts";
             this.dgvProducts.ReadOnly = true;
             this.dgvProducts.RowTemplate.Height = 25;
+            this.dgvProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvProducts.Size = new System.Drawing.Size(777, 363);
             this.dgvProducts.TabIndex = 1;
+            this.dgvProducts.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgvProducts_MouseDown);
+            // 
+            // ctxRightClick
+            // 
+            this.ctxRightClick.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.csbDelete});
+            this.ctxRightClick.Name = "ctxRightClick";
+            this.ctxRightClick.Size = new System.Drawing.Size(87, 26);
+            // 
+            // csbDelete
+            // 
+            this.csbDelete.Name = "csbDelete";
+            this.csbDelete.Size = new System.Drawing.Size(86, 22);
+            this.csbDelete.Text = "Sil";
+            this.csbDelete.Click += new System.EventHandler(this.csbDelete_Click);
             // 
             // label1
             // 
@@ -97,11 +121,22 @@
             this.btnReset.UseVisualStyleBackColor = true;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
+            // btnNew
+            // 
+            this.btnNew.Location = new System.Drawing.Point(136, 444);
+            this.btnNew.Name = "btnNew";
+            this.btnNew.Size = new System.Drawing.Size(130, 33);
+            this.btnNew.TabIndex = 4;
+            this.btnNew.Text = "Yeni";
+            this.btnNew.UseVisualStyleBackColor = true;
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 485);
+            this.Controls.Add(this.btnNew);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -115,6 +150,7 @@
             this.Text = "Ürün Paneli";
             this.Load += new System.EventHandler(this.frmMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).EndInit();
+            this.ctxRightClick.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -128,5 +164,8 @@
         private Label label1;
         private Label label2;
         private Button btnReset;
+        private Button btnNew;
+        private ContextMenuStrip ctxRightClick;
+        private ToolStripMenuItem csbDelete;
     }
 }

@@ -6,7 +6,7 @@ namespace BilgeAdam.EF.WinApp
         static void Main()
         {
             ApplicationConfiguration.Initialize();
-            Application.Run(new frmCustomers());
+            Application.Run(new frmMain());
         }
     }
 }

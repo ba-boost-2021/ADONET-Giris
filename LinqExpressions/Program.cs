@@ -35,6 +35,14 @@ Console.WriteLine("En yaşlı : " + oldest.Name);
 var youngest = list.MinBy(m => m.Age);
 Console.WriteLine("En genç : " + youngest.Name);
 
+//SELECT TOP 1 * FROM Persons WHERE Gender = 2
+var onlyOnefemaleV1 = list.Where(p => p.Gender == Gender.Female).First(); // Bir adet kayıt gelmek zorunda
+var onlyOnefemaleV2 = list.Where(p => p.Gender == Gender.Female).FirstOrDefault(); // Kayıt dönmez ise null değer atar
+
+var onlyOnefemaleV3 = list.Where(p => p.Gender == Gender.Female).Single(); // kendinden önceki verilen girdide koşul sonucunda bir adet kayıt gelmek zorunda
+var onlyOnefemaleV4 = list.Where(p => p.Gender == Gender.Female).SingleOrDefault(); // Kayıt dönmez ise null değer atar, kayıt dönerse adet 1 olmak zorundadır
+
+
 //SELECT * FROM Persons WHERE Gender = 2
 var females = list.Where(p => p.Gender == Gender.Female).ToList();
 //Bakınız : FemaleYield
@@ -118,7 +126,6 @@ class Samples
         if (person.Gender == Gender.Female)
         {
             yield return person;
-
         }
     }
 }

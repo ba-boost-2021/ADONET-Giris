@@ -1,4 +1,4 @@
-using BilgeAdam.EF.Common;
+﻿using BilgeAdam.EF.Common;
 using BilgeAdam.EF.Common.Entities;
 using BilgeAdam.EF.WinApp.Models;
 
@@ -41,7 +41,7 @@ namespace BilgeAdam.EF.WinApp
             using (var context = new NorthwindDbContext())
             {
                 dgvProducts.DataSource = null;
-                dgvProducts.DataSource = context.Products.ToList();
+                dgvProducts.DataSource = context.Products.Where(f => !f.IsDeleted).ToList();
 
                 //SELECT * FROM Products
             }
@@ -104,5 +104,51 @@ namespace BilgeAdam.EF.WinApp
                  */
             }
         }
+
+        private void btnNew_Click(object sender, EventArgs e)
+        {
+            var newForm = new frmNewProduct();
+            newForm.ShowDialog();
+        }
+
+        private void csbDelete_Click(object sender, EventArgs e)
+        {
+            var selected = dgvProducts.SelectedRows[0].DataBoundItem as Product;
+            if (selected == null)
+            {
+                return;
+            }
+            var result = MessageBox.Show($"{selected.ProductName} isimli ürünü silmek istediğinizden emin misiniz?", "Ürünler", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.No)
+            {
+                return;
+            }
+            using (var context = new NorthwindDbContext())
+            {
+                //context.Products.FirstOrDefault(i => i.ProductID == selected.ProductID);
+                var product = context.Products.SingleOrDefault(i => i.ProductID == selected.ProductID);
+                if (product == null)
+                {
+                    return;
+                }
+                context.Products.Remove(product);
+                context.SaveChanges(); // Kaydet, database i bu esnada yeniler, kendinden önceki çağırılmış operasyonlardaki veriyi kaydeder
+
+                dgvProducts.DataSource = null;
+                dgvProducts.DataSource = context.Products.Where(f => !f.IsDeleted).ToList();
+            }
+        }
+
+        private void dgvProducts_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                var clickedArea = dgvProducts.HitTest(e.X, e.Y);
+                dgvProducts.ClearSelection();
+                dgvProducts.Rows[clickedArea.RowIndex].Selected = true;
+            }
+        }
     }
 }
+
+//CLEAN CODE ARCHITECTURE

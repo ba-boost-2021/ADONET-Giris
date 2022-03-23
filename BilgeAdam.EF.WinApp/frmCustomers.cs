@@ -87,6 +87,11 @@ namespace BilgeAdam.EF.WinApp
                 dgvCustomers.DataSource = selectQuery.ToList();
             }
         }
+
+        private void dgvCustomers_MouseDown(object sender, MouseEventArgs e)
+        {
+
+        }
     }
 
     enum FilterBy

@@ -44,6 +44,7 @@
             this.dgvCustomers.RowTemplate.Height = 25;
             this.dgvCustomers.Size = new System.Drawing.Size(776, 373);
             this.dgvCustomers.TabIndex = 0;
+            this.dgvCustomers.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgvCustomers_MouseDown);
             // 
             // label1
             // 
