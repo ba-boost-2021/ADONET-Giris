@@ -1,14 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace Tratel.Entities.Main;
 
-namespace Tratel.Entities.Main
+[Table("LookUps", Schema = "Main")]
+public class LookUp : EntityBase
 {
-    [Table("LookUps", Schema = "Main")]
-    public class LookUp : EntityBase
-    {
-    }
+    [Required]
+    [MaxLength(32)]
+    public string Name { get; set; }
+
+    [Required]
+    public Guid TypeId { get; set; }
+
+    public Guid? ParentId { get; set; }
+
+    [MaxLength(16)]
+    public string Code { get; set; }
+
+    [ForeignKey(nameof(TypeId))]
+    public LookUpType Type { get; set; }
+
+    [ForeignKey(nameof(ParentId))]
+    public LookUp Parent { get; set; }
 }

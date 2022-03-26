@@ -1,15 +1,27 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿namespace Tratel.Entities.Customer;
 
-namespace Tratel.Entities.Customer
+[Table("Reservations", Schema = "Customer")]
+public class Reservation : EntityBase
 {
-    [Table("Reservations", Schema = "Customer")]
-    public class Reservation : EntityBase
-    {
-        public Guid UserId { get; set; }
-        public Guid PlaceId { get; set; }
-        public DateTime From { get; set; }
-        public DateTime To { get; set; }
-        public int AmountOfPople { get; set; }
-        public int ChildrenCount { get; set; }
-    }
+    [Required]
+    public Guid UserId { get; set; }
+
+    [Required]
+    public Guid PlaceId { get; set; }
+
+    [Required]
+    public DateTime From { get; set; }
+
+    public DateTime? Until { get; set; }
+
+    [Required]
+    public int AmountOfPople { get; set; }
+
+    public int ChildrenCount { get; set; }
+
+    [ForeignKey(nameof(UserId))]
+    public User User { get; set; }
+
+    [ForeignKey(nameof(PlaceId))]
+    public Place Place { get; set; }
 }

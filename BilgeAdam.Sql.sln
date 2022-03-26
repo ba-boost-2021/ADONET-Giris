@@ -61,7 +61,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tratel.Integrations.Mail", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "services", "services", "{89F9067F-9F13-42EC-A4A7-93D1709AEBC2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tratel.Common.Services", "Tratel.Common.Services\Tratel.Common.Services.csproj", "{38BA8303-8E52-45B1-A10A-090B958EADA5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tratel.Common.Services", "Tratel.Common.Services\Tratel.Common.Services.csproj", "{38BA8303-8E52-45B1-A10A-090B958EADA5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "help", "help", "{BB4E4629-F73F-4C09-81D1-5BAF8FB42176}"
+	ProjectSection(SolutionItems) = preProject
+		Migration.txt = Migration.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -175,6 +180,7 @@ Global
 		{4A9AA63C-B2AB-4839-B9FD-ED03A393C156} = {6299942D-3CDD-42E0-87F0-F1CF98E63236}
 		{89F9067F-9F13-42EC-A4A7-93D1709AEBC2} = {C6005987-C4F6-4996-B5D1-7FA75D9BB416}
 		{38BA8303-8E52-45B1-A10A-090B958EADA5} = {89F9067F-9F13-42EC-A4A7-93D1709AEBC2}
+		{BB4E4629-F73F-4C09-81D1-5BAF8FB42176} = {C6005987-C4F6-4996-B5D1-7FA75D9BB416}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {593AF392-1DBF-4C29-8F05-03E8E682D301}

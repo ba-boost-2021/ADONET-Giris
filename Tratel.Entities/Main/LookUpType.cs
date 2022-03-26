@@ -1,9 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿namespace Tratel.Entities.Main;
 
-namespace Tratel.Entities.Main
+[Table("LookUpTypes", Schema = "Main")]
+public class LookUpType : EntityBase
 {
-    [Table("LookUpTypes", Schema = "Main")]
-    public class LookUpType : EntityBase
-    {
-    }
+    [Required]
+    [MaxLength(32)]
+    public string Name { get; set; }
 }
