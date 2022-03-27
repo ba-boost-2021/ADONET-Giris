@@ -9,6 +9,10 @@ public class Person : EntityBase
     [Required]
     [MaxLength(32)]
     public string PassportNumber { get; set; }
+
+    [MaxLength(32)]
+    public string Phone { get; set; }
+
     [Required]
     public Guid NationalityId { get; set; }
 

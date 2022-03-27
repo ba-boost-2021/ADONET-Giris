@@ -7,14 +7,8 @@ namespace Tratel.Data
 {
     public class TratelDbContext : DbContext
     {
-        public TratelDbContext()
-        {
-
-        }
-
         public TratelDbContext(DbContextOptions options) : base(options)
         {
-
         }
         public DbSet<User> Users { get; set; }
         public DbSet<Place> Places { get; set; }

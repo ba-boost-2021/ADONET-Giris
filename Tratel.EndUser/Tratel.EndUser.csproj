@@ -3,13 +3,22 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net6.0-windows</TargetFramework>
-    <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Tratel.Data\Tratel.Data.csproj" />
+    <None Remove="appSettings.Production.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="appSettings.Production.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Tratel.Common.Services\Tratel.Common.Services.csproj" />
   </ItemGroup>
 
   <ItemGroup>

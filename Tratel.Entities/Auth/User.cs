@@ -11,13 +11,16 @@ public class User : EntityBase
     [MaxLength(64)]
     public string Password { get; set; }
 
-    [MaxLength(32)]
-    public string Phone { get; set; }
-
     [Required]
     [MaxLength(64)]
     public string Mail { get; set; }
 
+    [Required]
+    public Guid PersonId { get; set; }
+
     [MaxLength(40)]
     public string VerificationCode { get; set; }
+
+    [ForeignKey(nameof(PersonId))]
+    public Person Person { get; set; }
 }
