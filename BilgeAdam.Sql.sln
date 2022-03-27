@@ -66,6 +66,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "help", "help", "{BB4E4629-F73F-4C09-81D1-5BAF8FB42176}"
 	ProjectSection(SolutionItems) = preProject
 		Migration.txt = Migration.txt
+		Seed.sql = Seed.sql
 	EndProjectSection
 EndProject
 Global
