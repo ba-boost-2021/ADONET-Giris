@@ -33,6 +33,8 @@
             this.kullanıcıToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.msbUserManagement = new System.Windows.Forms.ToolStripMenuItem();
             this.msbNewUser = new System.Windows.Forms.ToolStripMenuItem();
+            this.metaVeriToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.msbLookUpTypes = new System.Windows.Forms.ToolStripMenuItem();
             this.menu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -40,7 +42,8 @@
             // 
             this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.uygulamaToolStripMenuItem,
-            this.kullanıcıToolStripMenuItem});
+            this.kullanıcıToolStripMenuItem,
+            this.metaVeriToolStripMenuItem});
             this.menu.Location = new System.Drawing.Point(0, 0);
             this.menu.Name = "menu";
             this.menu.Size = new System.Drawing.Size(1107, 24);
@@ -76,6 +79,21 @@
             this.msbNewUser.Text = "Yeni Kullanıcı";
             this.msbNewUser.Click += new System.EventHandler(this.msbNewUser_Click);
             // 
+            // metaVeriToolStripMenuItem
+            // 
+            this.metaVeriToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.msbLookUpTypes});
+            this.metaVeriToolStripMenuItem.Name = "metaVeriToolStripMenuItem";
+            this.metaVeriToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
+            this.metaVeriToolStripMenuItem.Text = "MetaVeri";
+            // 
+            // msbLookUpTypes
+            // 
+            this.msbLookUpTypes.Name = "msbLookUpTypes";
+            this.msbLookUpTypes.Size = new System.Drawing.Size(180, 22);
+            this.msbLookUpTypes.Text = "MetaVeri Tipleri";
+            this.msbLookUpTypes.Click += new System.EventHandler(this.msbLookUpTypes_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -100,5 +118,7 @@
         private ToolStripMenuItem kullanıcıToolStripMenuItem;
         private ToolStripMenuItem msbUserManagement;
         private ToolStripMenuItem msbNewUser;
+        private ToolStripMenuItem metaVeriToolStripMenuItem;
+        private ToolStripMenuItem msbLookUpTypes;
     }
 }

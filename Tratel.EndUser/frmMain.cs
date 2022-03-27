@@ -1,3 +1,4 @@
+using Tratel.EndUser.LookUpTypes;
 using Tratel.EndUser.Users;
 
 namespace Tratel.EndUser
@@ -24,6 +25,11 @@ namespace Tratel.EndUser
         private void msbNewUser_Click(object sender, EventArgs e)
         {
             OpenForm<frmNewUser>();
+        }
+
+        private void msbLookUpTypes_Click(object sender, EventArgs e)
+        {
+            OpenForm<frmLookUpTypes>();
         }
     }
 }
