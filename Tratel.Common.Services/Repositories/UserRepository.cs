@@ -8,6 +8,37 @@ namespace Tratel.Common.Services.Repositories;
 
 public class UserRepository
 {
+    public  NewUserDto GetNewUserDto(Guid id )
+    {
+        var context = ConnectionManager.GetDbContext();
+        var user = context.Users.Where(k => k.Id == id).Include(i => i.Person).ThenInclude(s => s.Nationality).Select(a => new NewUserDto
+                      {
+                          FullName = a.Person.FullName,
+                          Mail = a.Mail,
+                          PassportNumber = a.Person.PassportNumber,
+                          UserName = a.UserName,
+                          Password = a.Password,
+                          NationalityId = a.Person.NationalityId }).ToList() ;
+
+        return user[0];
+
+       
+
+    }
+    public bool UpdateUser(UpdateUserDto data)
+    {
+        var context = ConnectionManager.GetDbContext();
+
+        var user= new User { UserName = data.UserName, ModifiedAt = data.ModifiedDate , Mail = data.Mail, Password = data.Password };
+        context.Users.Update(user);
+
+        var person = new Person { ModifiedAt = data.ModifiedDate, FullName = data.FullName, NationalityId = data.NationalityId, PassportNumber= data.PassportNumber };
+        context.Persons.Update(person);
+
+        var result = context.SaveChanges();
+
+        return result == 2;
+    }
     public List<UserListDto> GetUsers()
     {
         var context = ConnectionManager.GetDbContext();
