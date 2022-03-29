@@ -25,15 +25,30 @@ public class UserRepository
        
 
     }
-    public bool UpdateUser(UpdateUserDto data)
+    public bool UpdateUser(UpdateUserDto data , Guid userId)
     {
         var context = ConnectionManager.GetDbContext();
 
-        var user= new User { UserName = data.UserName, ModifiedAt = data.ModifiedDate , Mail = data.Mail, Password = data.Password };
-        context.Users.Update(user);
+        var user = context.Users.Where(i => i.Id == userId).SingleOrDefault();
+        if (user == null)
+        {
+            return false;
+        }
+        var person = context.Persons.Where(i=> i.Id == user.PersonId).SingleOrDefault();
+        if(user == null)
+        {
+            return false;
+        }
+        user.UserName = data.UserName;
+        user.Password = data.Password;
+        user.Mail = data.Mail;
+        user.ModifiedAt = data.ModifiedDate;
 
-        var person = new Person { ModifiedAt = data.ModifiedDate, FullName = data.FullName, NationalityId = data.NationalityId, PassportNumber= data.PassportNumber };
-        context.Persons.Update(person);
+        person.PassportNumber = data.PassportNumber;
+        person.NationalityId = data.NationalityId;
+        person.FullName = data.FullName;
+        person.ModifiedAt = data.ModifiedDate;
+     
 
         var result = context.SaveChanges();
 
@@ -90,5 +105,25 @@ public class UserRepository
 
         var result = context.SaveChanges();
         return result == 2; // bir Person, bir User
+    }
+
+    public bool DeleteUser(Guid id)
+    {
+        var context = ConnectionManager.GetDbContext();
+        var user = context.Users.SingleOrDefault(i => i.Id == id);
+        if (user == null)
+        {
+            return false;
+        }
+        var person = context.Persons.SingleOrDefault(i => i.Id == user.PersonId);
+        if (person == null)
+        {
+            return false;
+        }
+
+        context.Users.Remove(user);
+        context.Persons.Remove(person);
+        var result = context.SaveChanges();
+        return result == 2;
     }
 }

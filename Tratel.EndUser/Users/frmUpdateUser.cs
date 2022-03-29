@@ -71,7 +71,23 @@ namespace Tratel.EndUser.Users
 
             };
 
-            userRepository.UpdateUser(user);
+           var result = userRepository.UpdateUser(user , User.Id);
+
+
+
+
+            if (result == false)
+            {   
+                MessageBox.Show("Kullanıcı güncellenemedi","Eror",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                this.DialogResult = DialogResult.Cancel;
+                this.Close();
+                return;
+            }
+            MessageBox.Show("Kullanıcı Başarıyla Güncellendi.","Başarılı",MessageBoxButtons.OK, MessageBoxIcon.Information);
+            this.DialogResult=DialogResult.OK;
+            this.Close();
+            return;
+
         }
     }
 }
