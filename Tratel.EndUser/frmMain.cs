@@ -31,5 +31,15 @@ namespace Tratel.EndUser
         {
             OpenForm<frmLookUpTypes>();
         }
+
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmsAddLookUpType_Click(object sender, EventArgs e)
+        {
+            OpenForm<frmNewLookUpType>();
+        }
     }
 }
