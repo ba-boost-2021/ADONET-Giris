@@ -49,7 +49,7 @@ public class LookUpTypeRepository
     {
         var context = ConnectionManager.GetDbContext();
 
-        var data = context.LookUpTypes.Where(x => x.Name == selectedTypeName).First();
+        var data = context.LookUpTypes.First(x => x.Name == selectedTypeName);
 
         context.LookUpTypes.Remove(data);
         var result = context.SaveChanges();
