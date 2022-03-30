@@ -30,14 +30,15 @@
         {
             this.menu = new System.Windows.Forms.MenuStrip();
             this.uygulamaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.placeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.msbPlaceList = new System.Windows.Forms.ToolStripMenuItem();
             this.kullanıcıToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.msbUserManagement = new System.Windows.Forms.ToolStripMenuItem();
             this.msbNewUser = new System.Windows.Forms.ToolStripMenuItem();
-            this.placeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.msbPlaceList = new System.Windows.Forms.ToolStripMenuItem();
             this.metaVeriToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.msbLookUpTypes = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsAddLookUpType = new System.Windows.Forms.ToolStripMenuItem();
+            this.msbLookUpTypeList = new System.Windows.Forms.ToolStripMenuItem();
             this.menu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,6 +60,21 @@
             this.uygulamaToolStripMenuItem.Name = "uygulamaToolStripMenuItem";
             this.uygulamaToolStripMenuItem.Size = new System.Drawing.Size(73, 20);
             this.uygulamaToolStripMenuItem.Text = "Uygulama";
+            // 
+            // placeToolStripMenuItem
+            // 
+            this.placeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.msbPlaceList});
+            this.placeToolStripMenuItem.Name = "placeToolStripMenuItem";
+            this.placeToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
+            this.placeToolStripMenuItem.Text = "Place";
+            // 
+            // msbPlaceList
+            // 
+            this.msbPlaceList.Name = "msbPlaceList";
+            this.msbPlaceList.Size = new System.Drawing.Size(107, 22);
+            this.msbPlaceList.Text = "Places";
+            this.msbPlaceList.Click += new System.EventHandler(this.msbPlaceList_Click);
             // 
             // kullanıcıToolStripMenuItem
             // 
@@ -94,11 +110,11 @@
             // msbLookUpTypes
             // 
             this.msbLookUpTypes.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cmsAddLookUpType});
+            this.cmsAddLookUpType,
+            this.msbLookUpTypeList});
             this.msbLookUpTypes.Name = "msbLookUpTypes";
             this.msbLookUpTypes.Size = new System.Drawing.Size(180, 22);
             this.msbLookUpTypes.Text = "MetaVeri Tipleri";
-            this.msbLookUpTypes.Click += new System.EventHandler(this.msbLookUpTypes_Click);
             // 
             // cmsAddLookUpType
             // 
@@ -107,20 +123,12 @@
             this.cmsAddLookUpType.Text = "Tip Ekle";
             this.cmsAddLookUpType.Click += new System.EventHandler(this.cmsAddLookUpType_Click);
             // 
-            // placeToolStripMenuItem
+            // msbLookUpTypeList
             // 
-            this.placeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.msbPlaceList});
-            this.placeToolStripMenuItem.Name = "placeToolStripMenuItem";
-            this.placeToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
-            this.placeToolStripMenuItem.Text = "Place";
-            // 
-            // msbPlaceList
-            // 
-            this.msbPlaceList.Name = "msbPlaceList";
-            this.msbPlaceList.Size = new System.Drawing.Size(180, 22);
-            this.msbPlaceList.Text = "Places";
-            this.msbPlaceList.Click += new System.EventHandler(this.msbPlaceList_Click);
+            this.msbLookUpTypeList.Name = "msbLookUpTypeList";
+            this.msbLookUpTypeList.Size = new System.Drawing.Size(180, 22);
+            this.msbLookUpTypeList.Text = "MetaVeri Listesi";
+            this.msbLookUpTypeList.Click += new System.EventHandler(this.msbLookUpTypeList_Click);
             // 
             // frmMain
             // 
@@ -132,7 +140,6 @@
             this.MainMenuStrip = this.menu;
             this.Name = "frmMain";
             this.Text = "Tratel - Agency v1";
-            this.Load += new System.EventHandler(this.frmMain_Load);
             this.menu.ResumeLayout(false);
             this.menu.PerformLayout();
             this.ResumeLayout(false);
@@ -152,5 +159,6 @@
         private ToolStripMenuItem cmsAddLookUpType;
         private ToolStripMenuItem placeToolStripMenuItem;
         private ToolStripMenuItem msbPlaceList;
+        private ToolStripMenuItem msbLookUpTypeList;
     }
 }

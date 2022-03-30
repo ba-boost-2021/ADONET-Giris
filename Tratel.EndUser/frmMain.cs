@@ -27,16 +27,6 @@ namespace Tratel.EndUser
             OpenForm<frmNewUser>();
         }
 
-        private void msbLookUpTypes_Click(object sender, EventArgs e)
-        {
-            OpenForm<frmLookUpTypes>();
-        }
-
-        private void frmMain_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void cmsAddLookUpType_Click(object sender, EventArgs e)
         {
             OpenForm<frmNewLookUpType>();
@@ -45,6 +35,11 @@ namespace Tratel.EndUser
         private void msbPlaceList_Click(object sender, EventArgs e)
         {
             OpenForm<frmPlaceList>();
+        }
+
+        private void msbLookUpTypeList_Click(object sender, EventArgs e)
+        {
+            OpenForm<frmLookUpTypes>();
         }
     }
 }
