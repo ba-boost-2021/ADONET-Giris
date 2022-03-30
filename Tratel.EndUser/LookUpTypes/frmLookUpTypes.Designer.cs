@@ -84,7 +84,7 @@
             // 
             this.txtName.Location = new System.Drawing.Point(53, 9);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(100, 23);
+            this.txtName.Size = new System.Drawing.Size(196, 23);
             this.txtName.TabIndex = 1;
             // 
             // label1
@@ -121,9 +121,11 @@
             this.Controls.Add(this.dgvLookUpTypes);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmLookUpTypes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "LookUp Types Menu";
+            this.Text = "Metaveri Tipleri";
             this.Load += new System.EventHandler(this.frmLookUpTypes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvLookUpTypes)).EndInit();
             this.cmsLookUpTypes.ResumeLayout(false);
