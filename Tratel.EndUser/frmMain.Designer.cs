@@ -33,6 +33,8 @@
             this.kullanıcıToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.msbUserManagement = new System.Windows.Forms.ToolStripMenuItem();
             this.msbNewUser = new System.Windows.Forms.ToolStripMenuItem();
+            this.placeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.msbPlaceList = new System.Windows.Forms.ToolStripMenuItem();
             this.metaVeriToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.msbLookUpTypes = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsAddLookUpType = new System.Windows.Forms.ToolStripMenuItem();
@@ -43,6 +45,7 @@
             // 
             this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.uygulamaToolStripMenuItem,
+            this.placeToolStripMenuItem,
             this.kullanıcıToolStripMenuItem,
             this.metaVeriToolStripMenuItem});
             this.menu.Location = new System.Drawing.Point(0, 0);
@@ -104,6 +107,21 @@
             this.cmsAddLookUpType.Text = "Tip Ekle";
             this.cmsAddLookUpType.Click += new System.EventHandler(this.cmsAddLookUpType_Click);
             // 
+            // placeToolStripMenuItem
+            // 
+            this.placeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.msbPlaceList});
+            this.placeToolStripMenuItem.Name = "placeToolStripMenuItem";
+            this.placeToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
+            this.placeToolStripMenuItem.Text = "Place";
+            // 
+            // msbPlaceList
+            // 
+            this.msbPlaceList.Name = "msbPlaceList";
+            this.msbPlaceList.Size = new System.Drawing.Size(180, 22);
+            this.msbPlaceList.Text = "Places";
+            this.msbPlaceList.Click += new System.EventHandler(this.msbPlaceList_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -132,5 +150,7 @@
         private ToolStripMenuItem metaVeriToolStripMenuItem;
         private ToolStripMenuItem msbLookUpTypes;
         private ToolStripMenuItem cmsAddLookUpType;
+        private ToolStripMenuItem placeToolStripMenuItem;
+        private ToolStripMenuItem msbPlaceList;
     }
 }

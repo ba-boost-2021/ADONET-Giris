@@ -41,5 +41,10 @@ namespace Tratel.EndUser
         {
             OpenForm<frmNewLookUpType>();
         }
+
+        private void msbPlaceList_Click(object sender, EventArgs e)
+        {
+            OpenForm<frmPlaceList>();
+        }
     }
 }

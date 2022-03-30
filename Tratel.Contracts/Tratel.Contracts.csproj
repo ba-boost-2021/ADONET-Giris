@@ -5,4 +5,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Tratel.Entities\Tratel.Entities.csproj" />
+  </ItemGroup>
+
 </Project>
