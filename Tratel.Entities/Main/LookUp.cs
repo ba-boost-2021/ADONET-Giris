@@ -20,4 +20,9 @@ public class LookUp : EntityBase
 
     [ForeignKey(nameof(ParentId))]
     public LookUp Parent { get; set; }
+
+    public override string ToString()
+    {
+        return Name;
+    }
 }

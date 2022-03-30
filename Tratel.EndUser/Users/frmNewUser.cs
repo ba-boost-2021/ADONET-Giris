@@ -14,6 +14,7 @@ namespace Tratel.EndUser.Users
         private void frmNewUser_Load(object sender, EventArgs e)
         {
             cmbNationality.DataSource = new LookUpRepository().GetNationalities();
+           
             cmbNationality.DisplayMember = nameof(GuidOptionDto.Text);
         }
 

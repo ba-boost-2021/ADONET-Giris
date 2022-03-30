@@ -16,7 +16,7 @@ public class Place : EntityBase
     [Required]
     public Guid TownId { get; set; }
 
-    [MaxLength(128)]
+    [MaxLength(256)]
     public string Address { get; set; }
 
     [ForeignKey(nameof(TownId))]
