@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Tratel.Common.Services.Repositories;
-using Tratel.Data.Managers;
+﻿using Tratel.Common.Services.Repositories;
 
 namespace Tratel.EndUser.Users
 {
