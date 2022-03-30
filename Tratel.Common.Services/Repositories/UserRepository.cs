@@ -20,7 +20,6 @@ public class UserRepository
             Password = a.Password,
             NationalityId = a.Person.NationalityId
         }).ToList();
-
         return user[0];
     }
 
