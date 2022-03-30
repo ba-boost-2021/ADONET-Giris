@@ -11,6 +11,12 @@ public partial class frmLookUpTypes : Form
     {
         InitializeComponent();
         Repository = new LookUpTypeRepository();
+        LookUpTypeEventManager.LookUpTypeEvents.OnLookUpTypeAdded += LookUpTypeEvents_OnLookUpTypeAdded;
+    }
+
+    private void LookUpTypeEvents_OnLookUpTypeAdded()
+    {
+        frmLookUpTypes_Load(null, null);
     }
 
     private void frmLookUpTypes_Load(object sender, EventArgs e)

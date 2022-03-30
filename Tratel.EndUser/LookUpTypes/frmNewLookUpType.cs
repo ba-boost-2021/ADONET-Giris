@@ -28,6 +28,7 @@ namespace Tratel.EndUser.LookUpTypes
             {
 
                 MessageBox.Show("Tip Kaydı Oluşturuldu!", "Tratel", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LookUpTypeEventManager.LookUpTypeEvents.LookUpTypeAdded();
             }
             else
             {
