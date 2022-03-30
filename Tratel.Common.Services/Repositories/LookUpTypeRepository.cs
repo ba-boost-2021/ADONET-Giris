@@ -48,9 +48,7 @@ public class LookUpTypeRepository
     public bool DeleteSelectedType(string selectedTypeName)
     {
         var context = ConnectionManager.GetDbContext();
-
         var data = context.LookUpTypes.First(x => x.Name == selectedTypeName);
-
         context.LookUpTypes.Remove(data);
         var result = context.SaveChanges();
         return result == 1;

@@ -8,7 +8,6 @@ namespace Tratel.Common.Services.Repositories;
 
 public class LookUpRepository
 {
-    
     public List<GuidOptionDto> GetNationalities()
     {
         var context = ConnectionManager.GetDbContext();

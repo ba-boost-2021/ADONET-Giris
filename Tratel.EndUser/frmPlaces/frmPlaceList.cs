@@ -59,8 +59,19 @@ namespace Tratel.EndUser
 
         private void btnAddPlace_Click(object sender, EventArgs e)
         {
+            if (frmPlaces.frmInsert.IsOpen)
+            {
+                return;
+            }
             var frmInsert = new frmPlaces.frmInsert();
-            frmInsert.ShowDialog();
+            frmInsert.FormClosed += FrmInsert_FormClosed;
+            frmInsert.MdiParent = this.MdiParent;
+            frmInsert.Show();
+        }
+
+        private void FrmInsert_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            ((frmPlaces.frmInsert)sender).FormClosed -= FrmInsert_FormClosed;
             dgvPlaces.DataSource = service.GetPlace();
         }
     }
