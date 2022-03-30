@@ -1,15 +1,16 @@
-﻿namespace PrivateProject;
-
-public class Mediator
+﻿namespace PrivateProject
 {
-    public Mediator()
+    public class Mediator
     {
-        var numbers = new Numbers();
-        Add = numbers.Add;
-        Remove = numbers.Remove;
-        WriteOnScreen = numbers.Print;
+        public Mediator()
+        {
+            var numbers = new Numbers();
+            Add = numbers.Add;
+            Remove = numbers.Remove;
+            WriteOnScreen = numbers.Print;
+        }
+        public ManipulateList Add { get; set; }
+        public ManipulateList Remove { get; set; }
+        public ExtractOutput WriteOnScreen { get; set; }
     }
-    public ManipulateList Add { get; set; }
-    public ManipulateList Remove { get; set; }
-    public ExtractOutput WriteOnScreen { get; set; }
 }
