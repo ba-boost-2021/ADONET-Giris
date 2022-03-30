@@ -8,24 +8,23 @@ namespace Tratel.Common.Services.Repositories;
 
 public class UserRepository
 {
-    public  NewUserDto GetNewUserDto(Guid id )
+    public NewUserDto GetNewUserDto(Guid id)
     {
         var context = ConnectionManager.GetDbContext();
         var user = context.Users.Where(k => k.Id == id).Include(i => i.Person).ThenInclude(s => s.Nationality).Select(a => new NewUserDto
-                      {
-                          FullName = a.Person.FullName,
-                          Mail = a.Mail,
-                          PassportNumber = a.Person.PassportNumber,
-                          UserName = a.UserName,
-                          Password = a.Password,
-                          NationalityId = a.Person.NationalityId }).ToList() ;
+        {
+            FullName = a.Person.FullName,
+            Mail = a.Mail,
+            PassportNumber = a.Person.PassportNumber,
+            UserName = a.UserName,
+            Password = a.Password,
+            NationalityId = a.Person.NationalityId
+        }).ToList();
 
         return user[0];
-
-       
-
     }
-    public bool UpdateUser(UpdateUserDto data , Guid userId)
+
+    public bool UpdateUser(UpdateUserDto data, Guid userId)
     {
         var context = ConnectionManager.GetDbContext();
 
@@ -34,8 +33,8 @@ public class UserRepository
         {
             return false;
         }
-        var person = context.Persons.Where(i=> i.Id == user.PersonId).SingleOrDefault();
-        if(user == null)
+        var person = context.Persons.Where(i => i.Id == user.PersonId).SingleOrDefault();
+        if (user == null)
         {
             return false;
         }
@@ -48,12 +47,12 @@ public class UserRepository
         person.NationalityId = data.NationalityId;
         person.FullName = data.FullName;
         person.ModifiedAt = data.ModifiedDate;
-     
 
         var result = context.SaveChanges();
 
         return result == 2;
     }
+
     public List<UserListDto> GetUsers()
     {
         var context = ConnectionManager.GetDbContext();
