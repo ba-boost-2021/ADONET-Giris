@@ -34,7 +34,7 @@
             this.cmsEditLookUpType = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsDeleteLookUpType = new System.Windows.Forms.ToolStripMenuItem();
             this.txtName = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblName = new System.Windows.Forms.Label();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.errP = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvLookUpTypes)).BeginInit();
@@ -82,19 +82,19 @@
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(53, 9);
+            this.txtName.Location = new System.Drawing.Point(58, 9);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(196, 23);
             this.txtName.TabIndex = 1;
             // 
-            // label1
+            // lblName
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 12);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 15);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "İsim :";
+            this.lblName.AutoSize = true;
+            this.lblName.Location = new System.Drawing.Point(17, 12);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(35, 15);
+            this.lblName.TabIndex = 2;
+            this.lblName.Text = "İsim :";
             // 
             // btnUpdate
             // 
@@ -114,9 +114,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(652, 346);
+            this.ClientSize = new System.Drawing.Size(652, 342);
             this.Controls.Add(this.btnUpdate);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblName);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.dgvLookUpTypes);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -142,7 +142,7 @@
         private ToolStripMenuItem cmsEditLookUpType;
         private ToolStripMenuItem cmsDeleteLookUpType;
         private TextBox txtName;
-        private Label label1;
+        private Label lblName;
         private Button btnUpdate;
         private ErrorProvider errP;
     }
