@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Tratel.Common.Extensions;
 using Tratel.Contracts.Users;
 using Tratel.Data.Managers;
 using Tratel.Entities.Auth;
@@ -86,9 +87,16 @@ public class UserRepository
     public bool CreateUser(NewUserDto newUser)
     {
         var context = ConnectionManager.GetDbContext();
+
+        var existing = context.Users.FirstOrDefault(f => f.Mail == newUser.Mail);
+        if (existing != null)
+        {
+            return false;
+        }
+
         var person = new Person
         {
-            FullName = newUser.FullName,
+            FullName = newUser.FullName.Formalize(),
             NationalityId = newUser.NationalityId,
             PassportNumber = newUser.PassportNumber
         };
@@ -101,6 +109,7 @@ public class UserRepository
             PersonId = person.Id
         });
 
+        
         var result = context.SaveChanges();
         return result == 2; // bir Person, bir User
     }

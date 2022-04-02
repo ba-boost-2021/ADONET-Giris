@@ -8,10 +8,29 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="appSettings.Production.json" />
+    <None Remove="Data\TestDataSeed.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="appSettings.Production.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\TestDataSeed.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
     <PackageReference Include="NUnit" Version="3.13.2" />
     <PackageReference Include="NUnit3TestAdapter" Version="4.0.0" />
     <PackageReference Include="coverlet.collector" Version="3.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Tratel.Common.Services\Tratel.Common.Services.csproj" />
+    <ProjectReference Include="..\Tratel.Common\Tratel.Common.csproj" />
   </ItemGroup>
 
 </Project>
