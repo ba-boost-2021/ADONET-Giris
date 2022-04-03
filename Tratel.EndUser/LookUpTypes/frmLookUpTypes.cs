@@ -12,6 +12,7 @@ public partial class frmLookUpTypes : Form
         InitializeComponent();
         Repository = new LookUpTypeRepository();
         LookUpTypeEventManager.LookUpTypeEvents.OnLookUpTypeAdded += LookUpTypeEvents_OnLookUpTypeAdded;
+        FormArrangement(false); 
     }
 
     private void LookUpTypeEvents_OnLookUpTypeAdded()
@@ -26,9 +27,9 @@ public partial class frmLookUpTypes : Form
 
     private void cmsDeleteLookUpType_Click(object sender, EventArgs e)
     {
-        var selectedTypeName = Convert.ToString(dgvLookUpTypes.CurrentRow.Cells[1].Value);
+        var selectedType = dgvLookUpTypes.CurrentRow.DataBoundItem as GuidOptionDto;
 
-        var result = Repository.DeleteSelectedType(selectedTypeName);
+        var result = Repository.DeleteSelectedType(selectedType);
 
         if (result)
         {
@@ -52,16 +53,18 @@ public partial class frmLookUpTypes : Form
 
     private void cmsEditLookUpType_Click(object sender, EventArgs e)
     {
-        txtName.Text = Convert.ToString(dgvLookUpTypes.CurrentRow.Cells[1].Value);
+        txtName.Text = (dgvLookUpTypes.CurrentRow.DataBoundItem as GuidOptionDto).Text;
+        FormArrangement(true); 
     }
 
     private void btnUpdate_Click(object sender, EventArgs e)
     {
 
-        var lookUps = dgvLookUpTypes.SelectedRows[0].DataBoundItem as GuidOptionDto;
+        var lookUps = dgvLookUpTypes.CurrentRow.DataBoundItem as GuidOptionDto;
         var strings = txtName.Text;
-        if (strings == null)
+        if (string.IsNullOrWhiteSpace(txtName.Text))
         {
+            errP.SetError(txtName, "Bir İsim girmelisiniz!");
             return;
         }
         var result = Repository.UpdateLookUpType(lookUps.Id, strings);
@@ -70,9 +73,22 @@ public partial class frmLookUpTypes : Form
             MessageBox.Show("Güncelleme Gerçekleştirilemedi", "Tratel", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return;
         }
-        dgvLookUpTypes.DataSource = null;
-        dgvLookUpTypes.DataSource = Repository.GetAllTypes();
+        LookUpTypeEventManager.LookUpTypeEvents.LookUpTypeAdded();
         MessageBox.Show("Güncelleme Başarılı", "Tratel", MessageBoxButtons.OK, MessageBoxIcon.Information);
-       
+        FormArrangement(false);
+    }
+
+    void FormArrangement(bool flag)
+    {
+        if (flag)
+        {
+            lblName.Visible = true;
+            txtName.Visible = true;
+            btnUpdate.Enabled = true;
+            return;
+        }
+        lblName.Visible = false;
+        txtName.Visible = false;
+        btnUpdate.Enabled = false;
     }
 }

@@ -43,6 +43,7 @@
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(183, 23);
             this.txtName.TabIndex = 0;
+            this.txtName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtName_KeyDown);
             // 
             // label1
             // 
@@ -75,8 +76,12 @@
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtName);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmNewLookUpType";
-            this.Text = "LookUp Type Ekle";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "MetaVeri Ekle";
             ((System.ComponentModel.ISupportInitialize)(this.errP)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

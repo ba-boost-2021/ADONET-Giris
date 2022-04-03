@@ -16,11 +16,9 @@ public class LookUpTypeRepository
             Text = x.Name
         }).ToList();
     }
-
     public bool CreateLookUpType(NewLookUpTypeDto data)
     {
         var context = ConnectionManager.GetDbContext();
-
         context.LookUpTypes.Add(new LookUpType
         {
             Name = data.Name,
@@ -28,10 +26,8 @@ public class LookUpTypeRepository
             ModifiedAt = data.ModifiedAt,
         });
         var result = context.SaveChanges();
-
         return result == 1;
     }
-
     public bool UpdateLookUpType(Guid Id, string name)
     {
         var context = ConnectionManager.GetDbContext();
@@ -44,13 +40,18 @@ public class LookUpTypeRepository
         var result = context.SaveChanges();
         return result == 1;
     }
-
-    public bool DeleteSelectedType(string selectedTypeName)
+    public bool DeleteSelectedType(GuidOptionDto metaData)
     {
         var context = ConnectionManager.GetDbContext();
-        var data = context.LookUpTypes.First(x => x.Name == selectedTypeName);
+        var data = context.LookUpTypes.First(x => x.Id == metaData.Id);
         context.LookUpTypes.Remove(data);
         var result = context.SaveChanges();
         return result == 1;
+    }
+    public bool CheckForExistMetaData(NewLookUpTypeDto data)
+    {
+        var context = ConnectionManager.GetDbContext();
+        var result = context.LookUpTypes.Any(x => x.Name == data.Name);
+        return result;
     }
 }
