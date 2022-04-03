@@ -11,6 +11,22 @@ Console.WriteLine("==================================================");
 Console.ForegroundColor = ConsoleColor.White;
 
 
+var productsAndOtherInformations = context.Products
+                                          .Select(s => new
+                                          {
+                                              Name = s.ProductName,
+                                              Category = s.Category.CategoryName,
+                                              Company = s.Supplier.CompanyName
+                                          }).ToList();
+
+Console.ForegroundColor = ConsoleColor.Yellow;
+foreach (var product in productsAndOtherInformations)
+{
+    Console.WriteLine("{0, 35}\t{1, 25}\t{2, 40}", product.Name, product.Category, product.Company);
+}
+Console.WriteLine("==================================================");
+Console.ForegroundColor = ConsoleColor.White;
+
 var sumOfAlfkisOrderPrice = context.OrderDetails.Include(i => i.Order)
                                                 .Where(f => f.Order.CustomerID == "ALFKI")
                                                 .Sum(s => s.UnitPrice * s.Quantity * (1 - (decimal)s.Discount));
@@ -75,8 +91,50 @@ foreach (var perf in employeeSalesPerformanceFor1997DetailedAndOrdered)
 }
 Console.WriteLine("==================================================");
 Console.ForegroundColor = ConsoleColor.White;
+Console.ForegroundColor = ConsoleColor.Green;
+Console.WriteLine("Order Details Oriented");
+Console.ForegroundColor = ConsoleColor.White;
+var salesSummaryOfEachProductInBeveragesCategory = context.OrderDetails
+                                                          .Include(i => i.Product)
+                                                          .ThenInclude(i => i.Category)
+                                                          .Where(f => f.Product.Category.CategoryName == "Beverages")
+                                                          .GroupBy(g => new { g.Product.ProductName, g.Product.Category.CategoryName })
+                                                          .Select(s => new 
+                                                          {
+                                                              ProductName = s.Key.ProductName,
+                                                              CategoryName = s.Key.CategoryName,
+                                                              Summary = s.Sum(s => s.UnitPrice * s.Quantity)
+                                                          });
 
-var salesSummaryOfEachProduct = "";
+Console.ForegroundColor = ConsoleColor.Red;
+foreach (var sales in salesSummaryOfEachProductInBeveragesCategory)
+{
+    Console.WriteLine("{0, 25}\t{1, 12}\t{2}", sales.ProductName, sales.CategoryName, sales.Summary);
+}
+Console.WriteLine("==================================================");
+Console.ForegroundColor = ConsoleColor.White;
+Console.ForegroundColor = ConsoleColor.Green;
+Console.WriteLine("Product Oriented");
+Console.ForegroundColor = ConsoleColor.White;
+var salesSummaryOfEachProductInBeveragesCategory2 = context.Products
+                                                          .Include(i => i.Category)
+                                                          .Include(i => i.OrderDetails)
+                                                          .Where(f => f.Category.CategoryName == "Beverages")
+                                                          .GroupBy(g => new { g.ProductName, g.Category.CategoryName })
+                                                          .Select(s => new
+                                                          {
+                                                              ProductName = s.Key.ProductName,
+                                                              CategoryName = s.Key.CategoryName,
+                                                              Summary = s.SelectMany(m => m.OrderDetails).Sum(t => t.UnitPrice * t.Quantity)
+                                                          });
+
+Console.ForegroundColor = ConsoleColor.Red;
+foreach (var sales in salesSummaryOfEachProductInBeveragesCategory2)
+{
+    Console.WriteLine("{0, 25}\t{1, 12}\t{2}", sales.ProductName, sales.CategoryName, sales.Summary);
+}
+Console.WriteLine("==================================================");
+Console.ForegroundColor = ConsoleColor.White;
 
 //void PrintQuery<T>(IQueryable<T> query)
 //{

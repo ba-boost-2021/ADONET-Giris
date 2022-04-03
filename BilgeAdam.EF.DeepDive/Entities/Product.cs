@@ -16,5 +16,7 @@ namespace BilgeAdam.EF.DeepDive.Entities
         public Category Category { get; set; } //Navigation Property (LEFT JOIN)
         [ForeignKey(nameof(SupplierID))]
         public Supplier Supplier { get; set; } //Navigation Property (LEFT JOIN)
+
+        public ICollection<OrderDetail> OrderDetails { get; set; }
     }
 }
